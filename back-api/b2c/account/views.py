@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from curses.ascii import HT
+from django.shortcuts import render, HttpResponse
 
 # Create your views here.
+def login(request):
+    return HttpResponse("TEST")

@@ -14,8 +14,50 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+from .env import env
+
+
+schema_view = get_schema_view( 
+    openapi.Info( 
+        title="B2C API with Django", 
+        default_version="v1", 
+        description="B2C API 문서", 
+        terms_of_service="https://www.google.com/policies/terms/", 
+        contact=openapi.Contact(name="b2c", email="b2c@b2c.com"), 
+        license=openapi.License(name="B2C License"), 
+    ), 
+    public=True, 
+    permission_classes=(permissions.AllowAny,), 
+)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('account.urls'))
 ]
+
+if env.DEBUG:
+    urlpatterns += [
+        path(
+            "swagger-b2c<str:format>",
+            schema_view.without_ui(cache_timeout=0),
+            name="swaager-b2c-json",
+        ),
+        path(
+            "swagger-b2c/",
+            schema_view.with_ui("swagger", cache_timeout=0),
+            name="swagger-b2c",
+        ),
+        path(
+            "redoc-fooiy/",
+            schema_view.with_ui("redoc", cache_timeout=0),
+            name="redoc-b2c",
+        ),
+        
+        ]
