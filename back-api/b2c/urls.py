@@ -38,12 +38,12 @@ schema_view = get_schema_view(
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', include('accounts.urls'))
 ]
 
 if env.DEBUG:
     urlpatterns += [
+        path('admin/', admin.site.urls),
         path(
             "swagger-b2c<str:format>",
             schema_view.without_ui(cache_timeout=0),
