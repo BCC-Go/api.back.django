@@ -39,7 +39,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('account.urls'))
+    path('', include('accounts.urls'))
 ]
 
 if env.DEBUG:
@@ -55,9 +55,9 @@ if env.DEBUG:
             name="swagger-b2c",
         ),
         path(
-            "redoc-fooiy/",
+            "redoc-b2c/",
             schema_view.with_ui("redoc", cache_timeout=0),
             name="redoc-b2c",
         ),
         
-        ]
+    ]
