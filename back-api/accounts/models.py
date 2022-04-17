@@ -14,6 +14,10 @@ class User(models.Model):
     )
     login_id = models.CharField(
         max_length=15,
+        verbose_name="로그인 id",
+    )
+    name = models.CharField(
+        max_length=5,
         verbose_name="이름",
     )
     password = models.CharField(
@@ -42,6 +46,6 @@ class User(models.Model):
         null=False,
         verbose_name="주소",
     )
-    type = models.CharField(default=0,verbose_name="소비자,판매자 타입")
+    type = models.CharField(max_length=2,default=0,verbose_name="소비자,판매자 타입")
 
 

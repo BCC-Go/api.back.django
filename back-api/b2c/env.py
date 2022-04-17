@@ -1,6 +1,6 @@
 class Env:
     DEBUG: bool = True
-    DATABASES_DEFAULT_NAME: str = "test"
+    DATABASES_DEFAULT_NAME: str = "test1"
     DATABASES_DEFAULT_USER: str = "admin"
     DATABASES_DEFAULT_PASSWORD: str = "SMoEcEXZ6PZUUiqDv5w9"
     DATABASES_DEFAULT_HOST: str = (
