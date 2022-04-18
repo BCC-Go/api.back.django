@@ -22,7 +22,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
 from .env import env
-from accounts.views import UserViewSet
+from accounts.views import UserViewSet as accountViewSet
 
 schema_view = get_schema_view( 
     openapi.Info( 
@@ -38,16 +38,17 @@ schema_view = get_schema_view(
 )
 
 router_user = routers.DefaultRouter()
-router_user.register(r"accounts", UserViewSet, basename="user")
+router_user.register(r"accounts", accountViewSet, basename="accounts")
 
 
 urlpatterns = [
-    path('', include(router_user.urls))
+    path("test/", include(router_user.urls))
 ]
 
 if env.DEBUG:
     urlpatterns += [
         path('admin/', admin.site.urls),
+        #path("accounts/", include(router_user.urls)),
         path(
             "swagger-b2c<str:format>",
             schema_view.without_ui(cache_timeout=0),
