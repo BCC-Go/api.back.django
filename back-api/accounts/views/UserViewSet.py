@@ -6,11 +6,11 @@ from rest_framework.viewsets import (
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from .serializers import UserSeriallizers
-from .models import User
+from accounts.serializers import UserSeriallizers
+from accounts.models import User
 
 
-class UserViewSet(GenericViewSet):
+class UserViewSet(mixins.DestroyModelMixin,GenericViewSet):
     """
     # User 관련 API set
     ---

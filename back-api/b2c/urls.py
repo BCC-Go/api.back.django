@@ -38,7 +38,7 @@ schema_view = get_schema_view(
 )
 
 router_user = routers.DefaultRouter()
-router_user.register(r"accounts", accountViewSet, basename="accounts")
+router_user.register(r"accounts", accountViewSet.UserViewSet, basename="accounts")
 
 
 urlpatterns = [
