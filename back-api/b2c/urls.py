@@ -22,7 +22,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
 from .env import env
-from accounts.views import UserViewSet as accountViewSet
+from accounts.views import index as accountViewSet
 
 schema_view = get_schema_view( 
     openapi.Info( 
