@@ -32,6 +32,9 @@ COPY $DOCKER_SRC/manage.py $DOCKER_SRVPROJ/manage.py
 COPY $DOCKER_SRC/b2c $DOCKER_SRVPROJ/b2c
 COPY $DOCKER_SRC/accounts $DOCKER_SRVPROJ/accounts
 
-EXPOSE 8000
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "b2c.wsgi"]
+EXPOSE 8000
+WORKDIR $DOCKER_SRVPROJ
+CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+
+#CMD ["gunicorn", "--bind", "0.0.0.0:8000", "b2c.wsgi"]
